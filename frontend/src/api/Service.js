@@ -101,5 +101,23 @@ export default class SendServer{
             .then(response => response.data)
             .catch(error => console.log('Error fetching transactions', error));
     }
+
+    //* Journals
+
+    static async getJournals(){
+
+        return [
+            {
+                id: 1,
+                title: 'Личный фонд: налогообложение',
+                content: 'Личный фонд, как новый инструмент наследования бизнеса и активов, проходит постоянную «донастройку» с точки зрения налогообложения. Общий тренд изменений в налогообложении Личных фондов направлен на учет его специфики. Под стать предназначению Личных фондов, налоговый режим стал приближен к налогообложению при личном владении и управлении активами...',
+                tags: ['Фонды', 'Активы', 'Налоги'],
+                date: '01.01.2023'
+            },
+        ]
+        // return await axios.get(baseUrl + '/journals')
+        //     .then(response => response.data)
+        //     .catch(error => console.log('Error fetching journals', error));
+    }
 }
 

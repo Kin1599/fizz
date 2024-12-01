@@ -1,0 +1,59 @@
+
+@use '../../shared/styles/colors.scss' as *;
+
+.journalItem{
+    border: 1px solid #DDDDDD;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 343px;
+    height: 450px;
+
+    > * {
+        margin-bottom: 20px;
+    }
+
+    &__title{
+       font-size: 20px;
+       line-height: 22px; 
+    }
+
+    &__content{
+        > *{
+            margin-bottom: 5px;
+        }
+    }
+
+    &__date{
+        text-align: right;
+        color: #DDDDDD;
+        font-size: 12px;    
+        line-height: 22px;
+    }
+
+    &__tags{
+        display: flex;
+        gap: 10px;
+        justify-content: right;
+
+        > * {
+            height: 22px;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: #FEC0EC;
+            color: #FFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__btns{
+        display: flex;
+        justify-content: center;
+    
+        .actionBtn{
+            background-color: $main-color;
+        }
+    }
+}

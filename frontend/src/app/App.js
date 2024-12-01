@@ -7,6 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 import PaymentsPage from '../pages/PaymentsPage/PaymentsPage';
 import GoalsPage from '../pages/GoalsPage/GoalsPage';
 import FamilyPage from '../pages/FamilyPage/FamilyPage';
+import JournalPage from '../pages/JournalPage/JournalPage';
 
 function App() {
   return (
@@ -37,6 +38,12 @@ function App() {
             path="/family" 
             element={
               <FamilyPage/>  
+            }
+          />
+          <Route 
+            path="/read"
+            element={
+              <JournalPage/>
             }
           />
         </Routes>

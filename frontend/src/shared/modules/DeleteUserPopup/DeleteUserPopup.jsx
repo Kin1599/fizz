@@ -8,14 +8,15 @@ function DeleteUserPopup({visible, onClose, onDelete, userName}) {
         onCancel={onClose}
         footer={null}
         closable={false}
+        width={320}
     >
         <div className={cl.deleteUserPopup}>
-            <p>Вы уверены, что хотите удалить пользователя {userName} из семьи?</p>
-            <div className={cl.deleteUserPopup__buttons}>
-                <Button type='primary' onClick={onDelete}>
+            <p className={cl.deleteUserPopup__text}>Вы уверены, что хотите удалить пользователя {userName} из семьи?</p>
+            <div className={cl.deleteUserPopup__btns}>
+                <Button className={cl.actionBtn} type='primary' onClick={onDelete}>
                     Удалить
                 </Button>
-                <Button onClick={onClose}>
+                <Button className={cl.actionBtn} onClick={onClose}>
                     Не удалять
                 </Button>
             </div>

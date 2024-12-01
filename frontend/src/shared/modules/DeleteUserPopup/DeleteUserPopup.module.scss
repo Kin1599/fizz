@@ -1,11 +1,33 @@
 
+@use '../../styles/colors.scss' as *;
 
 .deleteUserPopup{
     text-align: center;
+
+    > *{
+        margin-bottom: 20px;
+    }
+
+    &__text{
+        font-size: 20px;
+        line-height: 22px;
+    }
 
     &__buttons{
         display: flex;
         justify-content: center;
         gap: 1rem;
     }
+
+    &__btns{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        .actionBtn{
+            height: 32px;
+            background-color: $main-color;
+            color: #FFF;
+        }
+    }   
 }
