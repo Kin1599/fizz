@@ -142,10 +142,10 @@ const MainPage = () => {
           height={270}
           data={barChartData}
           margin={{ top: 30, right: 30, left: 20 }}
-          barCategoryGap={15}
+          barCategoryGap={10}
           style={{ margin: '0 auto' }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="6 6" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />

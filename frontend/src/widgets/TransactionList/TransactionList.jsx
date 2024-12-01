@@ -9,7 +9,7 @@ function TransactionList({transactions, onEdit, onHide, onDelete}) {
         <TransactionItem
             key={index}
             transaction={transaction}
-            onEdit={() => onEdit(index)}
+            onEdit={() => onEdit(transaction.id)}
             onHide={() => onHide(index)}
             onDelete={() => onDelete(index)}
         />

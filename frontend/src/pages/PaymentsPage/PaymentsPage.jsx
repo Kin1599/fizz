@@ -3,7 +3,6 @@ import cl from './PaymentsPage.module.scss';
 import plus from '../../shared/assets/plus.svg';
 import Footer from '../../widgets/Footer/Footer';
 import DeleteTransactionModal from '../../shared/modules/DeleteTransactionModal/DeleteTransactionModal';
-import EditTransactionModal from '../../shared/modules/EditTransactionModal/EditTransactionModal';
 import FiltersComponent from '../../widgets/FiltersComponent/FiltersComponent';
 import TransactionList from '../../widgets/TransactionList/TransactionList';
 import PaymentPopup from '../../shared/modules/PaymentPopup/PaymentPopup';
@@ -27,9 +26,24 @@ function PaymentsPage() {
     fetchTransactions();
   }, []);
 
-  const handleAddTransaction = (transaction) => {
-    setTransactions([...transactions, transaction]);
-    setIsPopupOpen(false);
+  const handleSaveTransaction = async (transaction) => { 
+    if (paymentToEdit) { 
+      // Редактирование существующей транзакции 
+      try { 
+        const updatedTransaction = await SendServer.updateTransaction(transaction.id, transaction); 
+        setTransactions(transactions.map(t => t.id === updatedTransaction.id ? updatedTransaction : t)); 
+        setPaymentToEdit(null); 
+      } catch (error) { 
+          console.error("Ошибка при обновлении транзакции:", error); 
+      } 
+    } else { 
+        try { 
+          const addedTransaction = await SendServer.addTransaction(transaction); 
+          setTransactions([...transactions, addedTransaction]); 
+        } catch (error) { 
+          console.error("Ошибка при добавлении транзакции:", error); 
+        } 
+    } setIsPopupOpen(false); 
   };
 
   const showPaymentPopup = (payment = null) => {
@@ -75,7 +89,7 @@ function PaymentsPage() {
             <FiltersComponent onFilterChange={(key, value) => console.log(key, value)}/>
             <TransactionList 
                 transactions={transactions} 
-                onEdit={handleAddTransaction} 
+                onEdit={showPaymentPopup} 
                 onHide={(index) => console.log('Hide transaction:', index)}
                 onDelete={handleDelete}
             />
@@ -84,7 +98,7 @@ function PaymentsPage() {
         <PaymentPopup 
             visible={isPopupOpen} 
             onClose={hidePaymentPopup} 
-            onSave={handleAddTransaction} 
+            onSave={handleSaveTransaction} 
             payment={paymentToEdit}
         />
 
@@ -93,13 +107,6 @@ function PaymentsPage() {
             onConfirm={confirmDelete} 
             onCancel={cancelDelete} 
         />
-
-        {/* <EditTransactionModal 
-            open={editModalOpen} 
-            onClose={() => setEditModalOpen(false)} 
-            transaction={transactionToEdit} 
-            onSave={handleSaveEdit}
-        /> */}
         <Footer/>
     </div>
   );
