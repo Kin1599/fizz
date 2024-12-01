@@ -5,7 +5,7 @@
   "models": [
     "src.auth.models.User",
     "src.cards.models.Card",
-    "src.transactions.models.Group",
+    "src.transactions.models.CustomGroup",
     "src.transactions.models.Transaction"
   ]
 }
