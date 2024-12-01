@@ -5,7 +5,7 @@ import TransactionItem from '../../shared/modules/TransactionItem/TransactionIte
 function TransactionList({transactions, onEdit, onHide, onDelete}) {
   return (
     <div className={cl.transactionList}>
-        {transactions.map((transaction, index) => (
+        {transactions && transactions.map((transaction, index) => (
         <TransactionItem
             key={index}
             transaction={transaction}

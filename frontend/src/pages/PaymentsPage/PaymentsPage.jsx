@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cl from './PaymentsPage.module.scss';
 import plus from '../../shared/assets/plus.svg';
 import Footer from '../../widgets/Footer/Footer';
@@ -7,17 +7,25 @@ import EditTransactionModal from '../../shared/modules/EditTransactionModal/Edit
 import FiltersComponent from '../../widgets/FiltersComponent/FiltersComponent';
 import TransactionList from '../../widgets/TransactionList/TransactionList';
 import PaymentPopup from '../../shared/modules/PaymentPopup/PaymentPopup';
+import SendServer from '../../api/Service';
 
 
 function PaymentsPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [paymentToEdit, setPaymentToEdit] = useState(null);
-  const [transactions, setTransactions] = useState([
-    { type: 'income', amount: 351, source: 'Перекресток', cardNumber: '7356' },
-    { type: 'expense', amount: 351, source: 'Перекресток', cardNumber: '7356' },
-  ]);
+  const [transactions, setTransactions] = useState([]);
   const [transactionToDelete, setTransactionToDelete] = useState(null);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      const response = await SendServer.getTransactions();
+      console.log(response);
+      setTransactions(response);
+    };
+    fetchTransactions();
+  }, []);
 
   const handleAddTransaction = (transaction) => {
     setTransactions([...transactions, transaction]);
@@ -39,8 +47,15 @@ function PaymentsPage() {
     setDeleteModalVisible(true);
   }
 
-  const confirmDelete = () => { 
-    setTransactions(transactions.filter((_, i) => i !== transactionToDelete)); 
+  const confirmDelete = async () => { 
+    const transactionId = transactions[transactionToDelete].id;
+    console.log(transactionId);
+    try{
+      await SendServer.deleteTransaction(transactionId);
+      setTransactions(transactions.filter((_, i) => i !== transactionToDelete)); 
+    } catch (error){
+      console.log("Ошибка при удалении транзакции:", error);
+    }
     setDeleteModalVisible(false); 
     setTransactionToDelete(null); 
   }; 

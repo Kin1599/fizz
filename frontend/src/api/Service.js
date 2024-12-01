@@ -1,6 +1,5 @@
 import axios from "axios"
 import baseUrl from "../config";
-import Password from "antd/es/input/Password";
 
 export default class SendServer{
     //* Здесь можно писать функции, которые взаимодействуют с сервером
@@ -70,6 +69,37 @@ export default class SendServer{
         return await axios.delete(baseUrl + `/cards/${card_id}`)
             .then(response => response.data)
             .catch(error => console.log('Error fetching cards', error));
+    }
+
+    //* Transactions
+    static async getTransactions(){
+        return await axios.get(baseUrl + '/transactions')
+            .then(response => response.data)
+            .catch(error => console.log('Error fetching transactions', error));
+    }
+
+    static async addTransaction(transaction_data){
+        return await axios.post(baseUrl + '/transactions', transaction_data)
+            .then(response => response.data)
+            .catch(error => console.log('Error fetching transactions', error));
+    }
+
+    static async getTransactionInfo(transaction_id){
+        return await axios.get(baseUrl + `/transactions/${transaction_id}`)
+            .then(response => response.data)
+            .catch(error => console.log('Error fetching transactions', error));
+    }
+
+    static async updateTransaction(transaction_id, transaction_data){
+        return await axios.put(baseUrl + `/transactions/${transaction_id}`, transaction_data)
+            .then(response => response.data)
+            .catch(error => console.log('Error fetching transactions', error));
+    }
+
+    static async deleteTransaction(transaction_id){
+        return await axios.delete(baseUrl + `/transactions/${transaction_id}`)
+            .then(response => response.data)
+            .catch(error => console.log('Error fetching transactions', error));
     }
 }
 

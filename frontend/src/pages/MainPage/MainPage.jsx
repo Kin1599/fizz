@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cl from './MainPage.module.scss';
 import { Tabs } from 'antd';
 import {
@@ -10,6 +10,7 @@ import '../../shared/styles/App.scss';
 import CreditCard from '../../widgets/CreditCard/CreditCard';
 import AddCard from '../../shared/modules/AddCard/AddCard';
 import AddCardPopup from '../../shared/modules/AddCardPopup/AddCardPopup';
+import SendServer from '../../api/Service';
 
 const DATA = {
   monthly: [
@@ -86,6 +87,17 @@ const MainPage = () => {
   const [summary, setSummary] = useState(calculateSummary(DATA.monthly));
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cards, setCards] = useState([]);
+
+
+  useEffect(() => {
+    const getCards = async () => {
+      const response = await SendServer.getCards();
+      console.log(response);
+      setCards(response);
+    }
+    
+    getCards();
+  }, [])
 
   const showModal = () => {
     setIsModalOpen(true);
