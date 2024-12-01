@@ -28,6 +28,12 @@ function CreditCard({card}) {
               return 'Кредитная';
           case 'wallet':
               return 'Кошелек';
+          case 'Дебетовая':
+              return 'Дебетовая';
+          case 'Кредитная':
+              return 'Кредитная';
+          case null:
+              return 'Кошелек';
           default:
               return 'Неизвестный тип';
       }
