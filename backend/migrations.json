@@ -3,6 +3,9 @@
   "directory": "migrations",
   "history": "migratehistory",
   "models": [
-    "src.auth.models.User"
+    "src.auth.models.User",
+    "src.cards.models.Card",
+    "src.transactions.models.Group",
+    "src.transactions.models.Transaction"
   ]
 }

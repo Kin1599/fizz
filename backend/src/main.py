@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .auth.router import router as auth_router
 from .users.router import router as users_router
+from .cards.router import router as cards_router
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -25,3 +26,4 @@ app.add_middleware(
 #* ROUTERS
 app.include_router(auth_router)
 app.include_router(users_router)
+app.include_router(cards_router)
