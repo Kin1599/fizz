@@ -1,0 +1,40 @@
+
+@use '../../styles/colors.scss' as *;    
+
+.familyItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    width: 380px;
+    padding: 13px 16px;
+    border-radius: 10px;
+    background-color: $background-color;
+    border: 1px solid #DDDDDD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+
+    &__content{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__text{
+        display: flex;
+        gap: 60px;
+    }
+
+    &__icons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        > * {
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(42%) hue-rotate(221deg) brightness(90%) contrast(87%);
+        }
+    }
+}

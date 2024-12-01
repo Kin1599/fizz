@@ -1,0 +1,32 @@
+
+@use '../../styles/colors.scss' as *;
+
+.paymentPopup{
+
+    > *:not(:last-child){
+        margin-bottom: 20px;
+    }
+
+    &__title{
+        color: $main-color;
+        font-size: 24px;
+        line-height: 22px;
+        text-align: center;
+    }
+
+    .formItem{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__btns{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        .actionBtn{
+            background-color: $main-color;
+        }
+    }
+}

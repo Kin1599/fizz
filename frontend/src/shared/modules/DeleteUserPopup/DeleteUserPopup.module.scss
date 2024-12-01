@@ -1,0 +1,11 @@
+
+
+.deleteUserPopup{
+    text-align: center;
+
+    &__buttons{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+}

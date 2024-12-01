@@ -1,0 +1,26 @@
+
+@use '../../styles/colors.scss' as *;
+
+.deleteModal{
+
+    > *:not(:last-child){
+        margin-bottom: 20px;
+    }
+
+    &__text{
+        text-align: center;
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    &__buttons{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    
+        .actionBtn{
+            background-color: $main-color;
+            color: #fff;
+        }
+    }
+}

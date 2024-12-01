@@ -1,0 +1,14 @@
+@use '../../styles/colors.scss' as *;
+
+.transactionItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    width: 380px;
+    padding: 13px 16px;
+    border-radius: 10px;
+    background-color: $background-color;
+    border: 1px solid #DDDDDD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}

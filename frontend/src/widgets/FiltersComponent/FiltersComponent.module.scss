@@ -1,0 +1,10 @@
+.filtersComponent{
+    text-align: right;
+
+    &__selects{
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+}

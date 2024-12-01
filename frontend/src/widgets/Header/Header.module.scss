@@ -1,0 +1,27 @@
+
+@use '../../shared/styles/colors.scss' as *;
+
+.header{
+    background-color: $main-color;
+    border-radius: 0px 0px 15px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 17px 24px;
+    color: $main-text-color;
+    position: fixed;
+    top: 0;
+    width: 430px;
+    z-index: 1;
+    
+    &__title{
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    &__tools{
+        display: flex;
+        gap: 20px
+    }
+}

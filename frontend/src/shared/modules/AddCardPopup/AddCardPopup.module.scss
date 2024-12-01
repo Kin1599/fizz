@@ -1,0 +1,33 @@
+
+@use '../../styles/colors.scss' as *;
+
+.addCardPopup{
+
+    > *:not(:last-child){
+        margin-bottom: 20px;
+    }
+
+    &__title{
+        color: $main-color;
+        font-size: 24px;
+        line-height: 22px;
+        text-align: center;
+    }
+
+    &__btns{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        .actionBtn{
+            background-color: $main-color;
+        }
+    }
+
+    .formItem{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 20px;
+    }
+}

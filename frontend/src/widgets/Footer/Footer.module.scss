@@ -1,0 +1,34 @@
+
+@use '../../shared/styles/colors.scss' as *;
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $main-color;
+    border-radius: 20px 20px 0 0;
+    padding: 9px 31px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    width: 430px;
+
+    &__item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
+        gap: 5px;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .active{
+        > img {
+            filter: brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(42%) hue-rotate(221deg) brightness(90%) contrast(87%);
+        }
+        color: $main-text-color;
+    }
+}
