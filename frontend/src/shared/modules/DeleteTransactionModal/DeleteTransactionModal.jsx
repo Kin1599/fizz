@@ -5,20 +5,19 @@ import cl from './DeleteTransactionModal.module.scss';
 const DeleteTransactionModal = ({open, onConfirm, onCancel }) => {
   return (
     <Modal
-        className={cl.deleteModal}
-        title="Удаление платежа"
         open={open}
+        closable={false}
         onCancel={onCancel}
-        footer={[
-            <Button key="back" onClick={onCancel}>
-            Не удалять
-            </Button>,
-            <Button key="submit" type="primary" onClick={onConfirm}>
-            Удалить
-            </Button>,
-        ]}
+        width={320}
+        footer={false}
     >
-      <p>Вы уверены, что хотите удалить этот платеж из истории?</p>
+      <div className={cl.deleteModal}>
+        <p className={cl.deleteModal__text}>Вы уверены, что хотите удалить этот платеж из истории?</p>
+        <div className={cl.deleteModal__buttons}>
+          <Button className={cl.actionBtn} type='primary' onClick={onConfirm}>Удалить</Button>
+          <Button className={cl.actionBtn} onClick={onCancel}>Отменить</Button>
+        </div>
+      </div>
     </Modal>
   );
 };

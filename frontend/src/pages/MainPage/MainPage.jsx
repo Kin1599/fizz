@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cl from './MainPage.module.scss';
-import { Tabs, Modal, Select, Input } from 'antd';
+import { Tabs } from 'antd';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie,
 } from 'recharts';
@@ -9,6 +9,7 @@ import Footer from '../../widgets/Footer/Footer';
 import '../../shared/styles/App.scss';
 import CreditCard from '../../widgets/CreditCard/CreditCard';
 import AddCard from '../../shared/modules/AddCard/AddCard';
+import AddCardPopup from '../../shared/modules/AddCardPopup/AddCardPopup';
 
 const DATA = {
   monthly: [
@@ -115,44 +116,6 @@ const MainPage = () => {
     { key: '3', label: 'По дням', children: <SummaryInfo summary={summary} /> },
   ];
 
-  const FormItem = ({ label, children }) => ( 
-    <div className={cl.formItem}> 
-      <label>{label}</label> {children} 
-    </div> 
-  );
-
-  const CardForm = ({ type }) => ( 
-    <> 
-      <FormItem label={type === 'wallet' ? 'Название кошелька:' : 'Банк:'}> 
-        { 
-          type === 'wallet' ? (
-            <Input placeholder='example'/>
-          )
-          :
-          <Select className={cl.input} defaultValue={type !== 'wallet' ? 'Т-Банк' : ''}> 
-            <Select.Option value="Т-Банк">Т-Банк</Select.Option>
-            <Select.Option value="Сбербанк">Сбербанк</Select.Option>
-            <Select.Option value="ВТБ">ВТБ</Select.Option>
-          </Select> 
-        }
-      </FormItem> 
-      <FormItem label={type === 'wallet' ? 'Остаток средств:' : 'Номер карты:'}> 
-        <Input className={cl.input} placeholder="example" /> 
-      </FormItem> 
-      {type !== 'wallet' && ( 
-        <FormItem label={type === 'credit' ? 'Остаток лимита:' : 'Остаток на счете:'}> 
-          <Input className={cl.input} placeholder="example" /> 
-        </FormItem> )} 
-    </> 
-  );
-
-  const tabsItemsOnCards = [
-    { key: '1', label: 'Дебетовая', children: <CardForm type="debit" /> },
-    { key: '2', label: 'Кредитная', children: <CardForm type='credit'/> },
-    { key: '3', label: 'Кошелек', children: <CardForm type='wallet'/> },
-  ]
-
-
   return (
     <div className={cl.mainPage}>
       <Header name="Дарья" />
@@ -209,17 +172,11 @@ const MainPage = () => {
           ))}
           <AddCard onClick={showModal} />
         </div>
-        <Modal title="Добавить карту" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-          <Tabs 
-            className={cl.mainPage__tabs} 
-            defaultActiveKey="1" 
-            items={tabsItemsOnCards} 
-            onChange={handleTabChange}
-            tabBarStyle={{
-              colorActive: '#C0CDFE',
-            }}
-          />
-        </Modal>
+        <AddCardPopup 
+          visible={isModalOpen} 
+          onCancel={handleCancel} 
+          onOk={handleOk}
+        />
       </div>
       <Footer />
     </div>

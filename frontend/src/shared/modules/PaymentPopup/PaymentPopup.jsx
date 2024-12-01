@@ -108,7 +108,7 @@ function PaymentPopup({visible, onClose, onSave, payment}) {
                 </TabPane>
             </Tabs>
             <div className={cl.paymentPopup__btns}>
-                <Button type='primary' onClick={handleSave}>Сохранить</Button>
+                <Button className={cl.actionBtn} type='primary' onClick={handleSave}>Сохранить</Button>
             </div>
         </div>
     </Modal>
