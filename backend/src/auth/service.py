@@ -1,6 +1,8 @@
 from fastapi import HTTPException
 from passlib.context import CryptContext
 from peewee import DoesNotExist
+from playhouse.shortcuts import model_to_dict
+
 from .models import User
 from .schemas import UserCreate
 
@@ -33,13 +35,14 @@ def create_user(user: UserCreate):
 
     # Хешируем пароль
     hashed_password = hash_password(user.hashed_password)
+    print(hashed_password)
 
     new_user = User(
-        login=user.login,
+        email=user.email,
         hashed_password=hashed_password
     )
 
-    new_user.save()
+    new_user.save(force_insert=True)  # Сохраняем нового пользователя в базе данных
 
     return new_user
 

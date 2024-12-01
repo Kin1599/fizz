@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException, Depends
 from peewee import DoesNotExist
 from .models import User
-from service import hash_password
+from .service import hash_password
 
-router = APIRouter()
+router = APIRouter(tags=["Users"])
 
-@router.get("/users/{user_id}", tags=["Users"])
+@router.get("/users/{user_id}")
 def get_user(user_id: int):
     try:
         user = User.get(User.id == user_id)
@@ -18,7 +18,7 @@ def get_user(user_id: int):
     except DoesNotExist:
         raise HTTPException(status_code=404, detail="User not found")
 
-@router.put("/users/{user_id}/password", tags=["Users"])
+@router.put("/users/{user_id}/password")
 def change_password(user_id: int, new_password: str):
     try:
         user = User.get(User.id == user_id)
@@ -28,7 +28,7 @@ def change_password(user_id: int, new_password: str):
     except DoesNotExist:
         raise HTTPException(status_code=404, detail="User not found")
 
-@router.put("/users/{user_id}/name", tags=["Users"])
+@router.put("/users/{user_id}/name")
 def update_name(user_id: int, name: str):
     try:
         user = User.get(User.id == user_id)
@@ -38,7 +38,7 @@ def update_name(user_id: int, name: str):
     except DoesNotExist:
         raise HTTPException(status_code=404, detail="User not found")
 
-@router.put("/users/{user_id}/birthday", tags=["Users"])
+@router.put("/users/{user_id}/birthday")
 def update_birthday(user_id: int, birthday: str):
     try:
         user = User.get(User.id == user_id)
