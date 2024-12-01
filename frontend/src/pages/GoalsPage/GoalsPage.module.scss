@@ -1,0 +1,28 @@
+
+@use '../../shared/styles/colors.scss' as *;
+
+.goalsPage{
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 25px;
+
+        .header__title{
+            color: $main-color;
+            font-size: 32px;
+        }
+    }   
+
+    &__content{
+        margin-bottom: 120px;
+        .goalsPage__cards{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    }
+}

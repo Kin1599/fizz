@@ -1,0 +1,17 @@
+
+@use '../../shared/styles/colors.scss' as *;
+
+.paymentsPage{
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 25px;
+
+        .header__title{
+            color: $main-color;
+            font-size: 32px;
+        }
+    }   
+}

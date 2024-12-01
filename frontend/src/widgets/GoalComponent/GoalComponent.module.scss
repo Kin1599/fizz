@@ -1,0 +1,32 @@
+
+@use '../../shared/styles/colors.scss' as *;
+
+.card{
+    width: 343px;
+    height: 99px;
+    border-radius: 20px;
+    border: 2px solid #DDDDDD;
+    background-color: #FFFFFC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__main{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+
+        .progress{
+            width: 213px;
+        }
+
+        .card__amount{
+            white-space: nowrap;
+        }
+    }
+}
