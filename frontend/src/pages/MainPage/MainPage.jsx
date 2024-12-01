@@ -116,6 +116,10 @@ const MainPage = () => {
     { key: '3', label: 'По дням', children: <SummaryInfo summary={summary} /> },
   ];
 
+  const handleAddCard = (newCard) => {
+    setCards([...cards, newCard]);
+  };
+
   return (
     <div className={cl.mainPage}>
       <Header name="Дарья" />
@@ -176,6 +180,7 @@ const MainPage = () => {
           visible={isModalOpen} 
           onCancel={handleCancel} 
           onOk={handleOk}
+          handleAddCard={handleAddCard}
         />
       </div>
       <Footer />

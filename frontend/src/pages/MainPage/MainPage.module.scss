@@ -28,9 +28,9 @@
     }
 
     &__cards{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
     }
