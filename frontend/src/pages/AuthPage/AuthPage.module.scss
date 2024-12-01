@@ -1,0 +1,73 @@
+
+@use '../../shared/styles/colors.scss' as *;
+@use '../../shared/styles/fonts.scss' as *;
+
+.auth{
+    text-align: center;
+    margin-top: 120px;
+
+    > *:not(:last-child){
+        margin-bottom: 30px;
+    }
+
+    &__title{
+        font-size: 32px;
+        line-height: 22px;
+        color: $main-color;   
+    }
+
+    &__entry{
+        > * {
+            margin-top: 30px;
+        }
+    }
+
+    &__inputs{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > * {
+            width: 210px;
+            margin-top: 30px;
+        }
+    }
+
+    &__btn{
+        background-color: $main-color;
+        width: fit-content;
+        height: 32px;       
+    }
+
+    &__link{
+        color:$main-color;
+    }
+
+    &__collection{
+        width: 277px;
+        margin: 0 auto;
+
+        > *:not(:last-child) {
+            margin-bottom: 30px;
+        }
+
+        .collection__main{
+            > span{
+                color: $main-color;
+            }
+        }
+
+        .collection__choose{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+
+            .choose__btn{
+                background-color: $main-color;
+                width: fit-content;
+                height: 32px;   
+                color: #FFF;
+            }
+        }
+    }
+}
