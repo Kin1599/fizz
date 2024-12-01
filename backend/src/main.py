@@ -2,17 +2,14 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .ping.router import router as ping_router
-from .database import Base, engine
+from .auth.router import router as auth_router
+from .users.router import router as users_router
 from dotenv import load_dotenv
 
 load_dotenv()
 
-#* Инициализация базы данных
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI(
-    title="API",
+    title="FinFairyAPI",
     root_path="/api"
 )
 
@@ -27,4 +24,5 @@ app.add_middleware(
 )
 
 #* ROUTERS
-app.include_router(ping_router)
+app.include_router(auth_router)
+app.include_router(users_router)
