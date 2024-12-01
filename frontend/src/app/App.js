@@ -6,6 +6,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import PaymentsPage from '../pages/PaymentsPage/PaymentsPage';
 import GoalsPage from '../pages/GoalsPage/GoalsPage';
+import FamilyPage from '../pages/FamilyPage/FamilyPage';
 
 function App() {
   return (
@@ -31,6 +32,12 @@ function App() {
             element={
               <GoalsPage/>
             } 
+          />
+          <Route 
+            path="/family" 
+            element={
+              <FamilyPage/>  
+            }
           />
         </Routes>
       </div>
