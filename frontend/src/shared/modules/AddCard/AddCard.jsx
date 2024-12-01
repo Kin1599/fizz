@@ -1,6 +1,6 @@
 import React from 'react'
 import cl from './AddCard.module.scss'
-import plusCircle from '../../shared/assets/plusCircle.svg'
+import plusCircle from '../../assets/plusCircle.svg'
 
 function AddCard({onClick}) {
   return (

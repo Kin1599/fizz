@@ -8,7 +8,7 @@ import Header from '../../widgets/Header/Header';
 import Footer from '../../widgets/Footer/Footer';
 import '../../shared/styles/App.scss';
 import CreditCard from '../../widgets/CreditCard/CreditCard';
-import AddCard from '../../widgets/AddCard/AddCard';
+import AddCard from '../../shared/modules/AddCard/AddCard';
 
 const DATA = {
   monthly: [
@@ -84,6 +84,7 @@ const MainPage = () => {
   const [barChartData, setBarChartData] = useState(DATA.monthly);
   const [summary, setSummary] = useState(calculateSummary(DATA.monthly));
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cards, setCards] = useState([]);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -114,8 +115,6 @@ const MainPage = () => {
     { key: '3', label: 'По дням', children: <SummaryInfo summary={summary} /> },
   ];
 
-  const cardsData = [];
-
   const FormItem = ({ label, children }) => ( 
     <div className={cl.formItem}> 
       <label>{label}</label> {children} 
@@ -132,6 +131,8 @@ const MainPage = () => {
           :
           <Select className={cl.input} defaultValue={type !== 'wallet' ? 'Т-Банк' : ''}> 
             <Select.Option value="Т-Банк">Т-Банк</Select.Option>
+            <Select.Option value="Сбербанк">Сбербанк</Select.Option>
+            <Select.Option value="ВТБ">ВТБ</Select.Option>
           </Select> 
         }
       </FormItem> 
@@ -203,7 +204,7 @@ const MainPage = () => {
         <CategoryList />
         <h2 className={cl.mainPage__title}>Информация о банковских картах</h2>
         <div className={cl.mainPage__cards}>
-          {cardsData.map((card, index) => (
+          {cards && cards.map((card, index) => (
             <CreditCard key={index} card={card} />
           ))}
           <AddCard onClick={showModal} />

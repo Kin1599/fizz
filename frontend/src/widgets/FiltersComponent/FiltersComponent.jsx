@@ -28,8 +28,11 @@ function FiltersComponent({onFilterChange}) {
                 onChange={(value) => onFilterChange('priority', value)}
             />
         </div>
-        <Space direction="vertical" size={12} className={cl.filtersComponent__calendar}>
-            <RangePicker onChange={(dates) => onFilterChange('dateRange', dates)} />
+        <Space direction="vertical" className={cl.filtersComponent__calendar}>
+            <RangePicker 
+                onChange={(dates) => onFilterChange('dateRange', dates)} 
+                style={{width: 256}}
+            />
         </Space>
     </div>
   )

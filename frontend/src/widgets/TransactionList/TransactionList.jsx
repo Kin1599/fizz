@@ -1,6 +1,6 @@
 import React from 'react'
 import cl from './TransactionList.module.scss'
-import TransactionItem from '../TransactionItem/TransactionItem'
+import TransactionItem from '../../shared/modules/TransactionItem/TransactionItem'
 
 function TransactionList({transactions, onEdit, onHide, onDelete}) {
   return (

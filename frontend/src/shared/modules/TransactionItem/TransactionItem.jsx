@@ -12,9 +12,9 @@ function TransactionItem({transaction, onEdit, onHide, onDelete}) {
         <div className={cl.source}>{source}</div> 
         <div className={cl.cardNumber}>*{cardNumber}</div> 
         <div className={cl.actions}> 
-            <Button icon={<EditOutlined />} onClick={onEdit} /> 
-            <Button icon={<EyeInvisibleOutlined />} onClick={onHide} /> 
-            <Button icon={<DeleteOutlined />} onClick={onDelete} /> 
+            <Button style={{backgroundColor: 'transparent'}} icon={<EditOutlined />} onClick={onEdit} /> 
+            <Button style={{backgroundColor: 'transparent'}} icon={<EyeInvisibleOutlined />} onClick={onHide} /> 
+            <Button style={{backgroundColor: 'transparent'}} icon={<DeleteOutlined />} onClick={onDelete} /> 
         </div> 
     </div>
   )
